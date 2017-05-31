@@ -36,10 +36,12 @@ handlers making it hard to read and maintain.
 network call.
 
 
-
-
 > **Ease** is designed with having all the above issues in mind. It does most of the work on behalf of 
 > developers, leaving behind the **minimal** work for them.
+
+## Usage
+
+Please clone or download this module and add it as `Android library` in your project.
 
 ## Configuration
 
