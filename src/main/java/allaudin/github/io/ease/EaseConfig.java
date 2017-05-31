@@ -48,6 +48,7 @@ public interface EaseConfig {
     boolean shouldCacheResponse();
 
     // TODO: 5/30/17 add support for ssl [allaudin]
+    
     // TODO: 5/31/2017 add sanitize hook
 
     /**
