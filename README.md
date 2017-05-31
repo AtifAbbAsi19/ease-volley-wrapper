@@ -147,7 +147,7 @@ network call is running in background **no progress dialog will be shown to user
 
 ## To Do
 
-- Add support for SSL certificate and key pinning
+- Add support for SSL certificate and key pinning [In Progress]
 - Add support for multiple parallel requests
 - Make code coverage to 100%.
 
