@@ -155,6 +155,11 @@ network call is running in background **no progress dialog will be shown to user
 > I appreciate improvements.
 
 
+## Contribution Note
+
+It would be great if you support your patch with tests before creating a pull request.
+
+
 License
 -------
 
