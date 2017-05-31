@@ -1,4 +1,4 @@
-## Ease Volley Wrapper
+# Ease Volley Wrapper
 
 **Ease** is a wrapper around [Volley](https://github.com/google/volley) for handling network 
 responses more effectively. It offers **auto parsing** of response to a **specific** type with **clean**
