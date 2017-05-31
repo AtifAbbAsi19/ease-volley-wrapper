@@ -131,6 +131,13 @@ above example response can be handheld as following.
     
 ```
 
+## Request IDs
+
+Each request can have **optional** request ID, for identifying responses in callbacks. You 
+can always match the request ID in response callback for parsing response of specific 
+request.
+
+> Although, request IDs are optional, I strongly recommend to attach ID with each request.
 
 ## Running network call in background
 
