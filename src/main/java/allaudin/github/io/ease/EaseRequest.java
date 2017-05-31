@@ -85,16 +85,21 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
     private EaseBaseRequest<T> mEaseBaseRequest;
 
     /**
-     * Should cache response. If set to -1, fetch flag from default configuration.
+     * Should cache response. If set to -1, fetch flag from configuration.
      *
      * @see EaseConfig
      */
 
     private int mShouldCache;
 
+    /**
+     * Socket timeout for this request. If set to -1, fetch from configuration.
+     */
+    private int mSocketTimeout;
+
 
     private EaseRequest(int requestId, TypeToken<EaseResponse<T>> typeToken, int method, String endpoint, RequestHeaders headers, RequestBody requestBody,
-                        EaseCallbacks<T> responseCallbacks, EaseDialog easeDialog, boolean runInBackground, int shouldCache) {
+                        EaseCallbacks<T> responseCallbacks, EaseDialog easeDialog, boolean runInBackground, int shouldCache, int socketTimeout) {
         mRequestId = requestId;
         mEndPoint = endpoint;
         mHeaders = headers;
@@ -105,14 +110,16 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
         mEaseDialog = easeDialog;
         mRunInBackground = runInBackground;
         mResponseCallbacks = responseCallbacks;
+        mSocketTimeout = socketTimeout;
     }
 
 
     private static <T> EaseRequest<T> newInstance(int requestId, TypeToken<EaseResponse<T>> typeToken, int method, String endpoint, RequestHeaders headers, RequestBody requestBody,
                                                   EaseCallbacks<T> responseCallbacks,
                                                   EaseDialog dialog, boolean runInBackground,
-                                                  int shouldCache) {
-        return new EaseRequest<>(requestId, typeToken, method, endpoint, headers, requestBody, responseCallbacks, dialog, runInBackground, shouldCache);
+                                                  int shouldCache, int socketTimeout) {
+        return new EaseRequest<>(requestId, typeToken, method, endpoint, headers, requestBody, responseCallbacks,
+                dialog, runInBackground, shouldCache, socketTimeout);
     }
 
     /**
@@ -154,7 +161,9 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
         showDialog(context);
 
 
-        mEaseBaseRequest.setRetryPolicy(new EaseRetryPolicy(config.socketTimeOut(), config.numOfRetries()));
+        int timeout = mSocketTimeout == -1 ? config.socketTimeOut() : mSocketTimeout;
+
+        mEaseBaseRequest.setRetryPolicy(new EaseRetryPolicy(timeout, config.numOfRetries()));
 
         EaseVolleyWrapper.addRequest(context, mEaseBaseRequest);
         return this;
@@ -175,7 +184,7 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
 
         @Override
         public int getCurrentTimeout() {
-            // use default 10 sec timeout if timeout is 0.
+            // use default 10 sec socketTimeout if socketTimeout is 0.
             return timeout == 0 ? 10000 : timeout;
         }
 
@@ -274,6 +283,7 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
         private RequestHeaders headers;
         private EaseDialog dialog;
         private int shouldCache;
+        private int socketTimeout;
         private boolean runInBackground;
         private TypeToken<EaseResponse<K>> typeToken;
         private EaseCallbacks<K> responseCallbacks;
@@ -283,12 +293,19 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
             runInBackground = false;
             this.typeToken = typeToken;
             this.shouldCache = -1; // fall back to default
+            this.socketTimeout = -1; // fall back to default
         }
 
         public RequestBuilder<K> requestId(int requestId) {
             this.requestId = requestId;
             return this;
         }
+
+        public RequestBuilder<K> socketTimeOut(int timeout) {
+            this.socketTimeout = timeout;
+            return this;
+        }
+
 
         public RequestBuilder<K> dialog(@Nullable EaseDialog dialog) {
             this.dialog = dialog;
@@ -382,7 +399,7 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
 
         public NetworkCall<K> build() {
             return EaseRequest.newInstance(requestId, typeToken, method, endpoint, headers,
-                    requestBody, responseCallbacks, dialog, runInBackground, shouldCache);
+                    requestBody, responseCallbacks, dialog, runInBackground, shouldCache, socketTimeout);
         }
 
 

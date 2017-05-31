@@ -61,6 +61,8 @@ public interface EaseConfig {
     /**
      * Socket timeout for all requests
      * <p>If 0 is returned form this method, default socket timout of {@code 10 sec} will be used.</p>
+     * <p>
+     * <b>Note:</b> This timeout has <em>less priority</em> than timeout set through {@link EaseRequest.RequestBuilder}
      *
      * @return int timeout in millis
      * @see com.android.volley.RetryPolicy
