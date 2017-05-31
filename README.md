@@ -41,7 +41,18 @@ network call.
 > **Ease** is designed with having all the above issues in mind. It does most of the work on behalf of 
 > developers, leaving behind the **minimal** work for them.
 
+## Configuration
 
+`Ease` is not smart enough to know every thing in advance. To help it out, you need to pass a configuration 
+object *(implementation of `EaseConfig` interface)* to `Ease` for making it work according to your need.
+
+Call `EaseUtils.init` at least once with `EaseConfig` object for configuring `Ease`.
+
+    EaseUtils.init(EaseConfig)
+    
+        
+> Please note if you don't initialize `Ease`, it will use default implementation of `EaseConfig`.        
+    
 
 ## Building a Request
 
@@ -100,7 +111,7 @@ above example response can be handheld as following.
 ```java
 
    @Override
-    public void onSuccess(@NonNull EaseRequest<List<UserModel>> request, @NonNull String description, @NonNull List<UserModel> data) {
+    public void onSuccess(@NonNull EaseRequest<List<UserModel>> request, @NonNull String description, @Nullable List<UserModel> data) {
             // on success, use request.id() for getting request id.
     }
 
@@ -124,18 +135,5 @@ above example response can be handheld as following.
 For running network calls in background, you can call `runInBackground()` while building network request. If 
 network call is running in background **no progress dialog will be shown to user**.
 
-## Getting Started
 
-### Configuration
-
-`Ease` is not smart enough to know every thing in advance. To help it out, you need to pass a configuration 
-object *(implementation of `EaseConfig` interface)* to `Ease` for making it work according to your need.
-
-Call `EaseUtils.init` at least once with `EaseConfig` object for configuring `Ease`.
-
-    EaseUtils.init(EaseConfig)
-    
-        
-> Please not if you don't initialize `Ease`, it will use default implementation of `EaseConfig`.        
-    
 Made with :heart: by allaudin
