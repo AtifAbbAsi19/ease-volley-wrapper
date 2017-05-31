@@ -151,6 +151,9 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
                 this, this);
         mEaseBaseRequest.setShouldCache(mShouldCache == -1 ? config.shouldCacheResponse() : mShouldCache == 1);
         showDialog(context);
+        if (config.retryPolicy() != null) {
+            mEaseBaseRequest.setRetryPolicy(config.retryPolicy());
+        }
         EaseVolleyWrapper.addRequest(context, mEaseBaseRequest);
         return this;
     }

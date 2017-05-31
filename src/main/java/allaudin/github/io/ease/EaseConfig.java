@@ -3,6 +3,8 @@ package allaudin.github.io.ease;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.android.volley.RetryPolicy;
+
 /**
  * Ease configuration interface for initializing
  * ease wrapper.
@@ -56,5 +58,16 @@ public interface EaseConfig {
      * @return true for enable logging, false for disabling.
      */
     boolean enableLogging();
+
+
+    /**
+     * Retry policy for all requests.
+     * <p>
+     * Set timeout here!
+     *
+     * @return RetryPolicy
+     */
+    @Nullable
+    RetryPolicy retryPolicy();
 
 }
