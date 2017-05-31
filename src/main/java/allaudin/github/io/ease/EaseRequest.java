@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.google.gson.reflect.TypeToken;
 
@@ -151,13 +152,43 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
                 this, this);
         mEaseBaseRequest.setShouldCache(mShouldCache == -1 ? config.shouldCacheResponse() : mShouldCache == 1);
         showDialog(context);
-        if (config.retryPolicy() != null) {
-            mEaseBaseRequest.setRetryPolicy(config.retryPolicy());
-        }
+
+
+        mEaseBaseRequest.setRetryPolicy(new EaseRetryPolicy(config.socketTimeOut(), config.numOfRetries()));
+
         EaseVolleyWrapper.addRequest(context, mEaseBaseRequest);
         return this;
     }
 
+    /**
+     * Retry policy for this request.
+     */
+    private class EaseRetryPolicy implements RetryPolicy {
+
+        int timeout;
+        int retryCount;
+
+        EaseRetryPolicy(int timeout, int retryCount) {
+            this.timeout = timeout;
+            this.retryCount = retryCount;
+        }
+
+        @Override
+        public int getCurrentTimeout() {
+            // use default 10 sec timeout if timeout is 0.
+            return timeout == 0 ? 10000 : timeout;
+        }
+
+        @Override
+        public int getCurrentRetryCount() {
+            return retryCount;
+        }
+
+        @Override
+        public void retry(VolleyError error) throws VolleyError {
+
+        }
+    }
 
     /**
      * Initialize and show dialog if call is not running in background.

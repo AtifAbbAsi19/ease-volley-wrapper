@@ -3,9 +3,6 @@ package allaudin.github.io.ease;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.android.volley.RetryPolicy;
-import com.android.volley.VolleyError;
-
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -45,22 +42,12 @@ final class EaseDefaultConfig implements EaseConfig {
     }
 
     @Override
-    public RetryPolicy retryPolicy() {
-        return new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return (int) TimeUnit.SECONDS.toMillis(10);
-            }
+    public int socketTimeOut() {
+        return (int) TimeUnit.SECONDS.toMillis(10);
+    }
 
-            @Override
-            public int getCurrentRetryCount() {
-                return 0;
-            }
-
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-
-            }
-        };
+    @Override
+    public int numOfRetries() {
+        return 0;
     }
 }

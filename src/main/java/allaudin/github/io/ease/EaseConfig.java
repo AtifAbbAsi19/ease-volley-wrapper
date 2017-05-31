@@ -3,8 +3,6 @@ package allaudin.github.io.ease;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.android.volley.RetryPolicy;
-
 /**
  * Ease configuration interface for initializing
  * ease wrapper.
@@ -61,13 +59,20 @@ public interface EaseConfig {
 
 
     /**
-     * Retry policy for all requests.
-     * <p>
-     * Set timeout here!
+     * Socket timeout for all requests
+     * <p>If 0 is returned form this method, default socket timout of {@code 10 sec} will be used.</p>
      *
-     * @return RetryPolicy
+     * @return int timeout in millis
+     * @see com.android.volley.RetryPolicy
      */
-    @Nullable
-    RetryPolicy retryPolicy();
+    int socketTimeOut();
+
+    /**
+     * Number for tries in case of failure
+     *
+     * @return int number of tries
+     * @see com.android.volley.RetryPolicy
+     */
+    int numOfRetries();
 
 }
