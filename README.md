@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/allaudin/ease-volley-wrapper.svg?branch=master)](https://travis-ci.org/allaudin/ease-volley-wrapper)
+
 # Ease Volley Wrapper
 
 **Ease** is a wrapper around [Volley](https://github.com/google/volley) for handling network 
