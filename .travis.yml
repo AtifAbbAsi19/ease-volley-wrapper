@@ -9,11 +9,10 @@ android:
 
 jdk:
   - oraclejdk8
-  
+
 install:
   - true
 
-before_script:
-  - chmod +x gradlew      #Grand permissions
 
-script: TERM=dumb ./gradlew assembleDebug -x connectedCheck
+script:
+  - ./gradlew assembleDebug -x connectedCheck
