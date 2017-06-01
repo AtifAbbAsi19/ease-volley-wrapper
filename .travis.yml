@@ -6,5 +6,7 @@ android:
     - build-tools-25.0.3
     - android-25
 
-  script:
-     - ./gradlew build
+  install:
+      - true
+
+  script: TERM=dumb ./gradlew assembleDebug
