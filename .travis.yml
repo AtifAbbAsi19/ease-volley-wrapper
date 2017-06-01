@@ -14,4 +14,4 @@ install:
   - true
 
 script:
-  - gradle assembleDebug -x connectedCheck
+  - gradle test
