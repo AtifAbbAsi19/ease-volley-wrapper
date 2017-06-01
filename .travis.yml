@@ -13,6 +13,5 @@ jdk:
 install:
   - true
 
-
 script:
-  - ./gradlew assembleDebug -x connectedCheck
+  - gradle assembleDebug -x connectedCheck
