@@ -7,4 +7,5 @@ android:
     - android-25
     - sys-img-armeabi-v7a-android-18
 
-  script: gradle build
+  script:
+     - ./gradlew build
