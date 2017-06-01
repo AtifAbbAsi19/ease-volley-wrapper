@@ -40,5 +40,5 @@ public class RequestHeadersTest {
         assertNotSame(requestHeader.get(), requestHeader.get());
     }
 
-    // TODO: 5/31/2017 add json header test 
+    // TODO: 5/31/2017 add json header test
 }
