@@ -2,6 +2,7 @@ package allaudin.github.io.ease;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -236,12 +237,15 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
     public void onResponse(EaseResponse<T> response) {
         hideDialog();
 
-        String description = response.getDescription() == null ? "" : response.getDescription();
-
         if (mResponseCallbacks == null) {
+            Log.w("ease", "response callbacks are not specified for request [" + mEndPoint + "]");
             return;
         }
-        
+
+
+        String description = response.getDescription() == null ? "" : response.getDescription();
+
+
         if (response.isSuccessful()) {
             mResponseCallbacks.onSuccess(this, description, response.getData());
         } else {
@@ -271,6 +275,8 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
         hideDialog();
         if (mResponseCallbacks != null) {
             mResponseCallbacks.onError(this, new EaseException(error));
+        }else {
+            Log.w("ease", "response callbacks are not specified for request [" + mEndPoint + "]");
         }
     } // onErrorResponse
 
