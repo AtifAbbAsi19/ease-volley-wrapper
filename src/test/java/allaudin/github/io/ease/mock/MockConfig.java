@@ -42,4 +42,14 @@ public class MockConfig implements EaseConfig {
     public boolean enableLogging() {
         return false;
     }
+
+    @Override
+    public int socketTimeOut() {
+        return 0;
+    }
+
+    @Override
+    public int numOfRetries() {
+        return 0;
+    }
 }
