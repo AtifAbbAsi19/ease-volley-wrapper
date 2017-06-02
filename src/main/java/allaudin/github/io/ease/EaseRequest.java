@@ -238,6 +238,10 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
 
         String description = response.getDescription() == null ? "" : response.getDescription();
 
+        if (mResponseCallbacks == null) {
+            return;
+        }
+        
         if (response.isSuccessful()) {
             mResponseCallbacks.onSuccess(this, description, response.getData());
         } else {
@@ -265,7 +269,9 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
     @Override
     public void onErrorResponse(VolleyError error) {
         hideDialog();
-        mResponseCallbacks.onError(this, new EaseException(error));
+        if (mResponseCallbacks != null) {
+            mResponseCallbacks.onError(this, new EaseException(error));
+        }
     } // onErrorResponse
 
 
