@@ -1,5 +1,7 @@
 package allaudin.github.io.ease;
 
+import android.support.annotation.NonNull;
+
 import com.android.volley.VolleyLog;
 
 import java.util.Locale;
@@ -31,7 +33,13 @@ public class EaseUtils {
     }
 
     public static EaseConfig getConfig() {
-        return mInstance == null ? new EaseDefaultConfig() : mInstance;
+        return mInstance == null ? new EaseDefaultConfig() {
+            @NonNull
+            @Override
+            public String getBaseUrl() {
+                return "";
+            }
+        } : mInstance;
     }
 
 

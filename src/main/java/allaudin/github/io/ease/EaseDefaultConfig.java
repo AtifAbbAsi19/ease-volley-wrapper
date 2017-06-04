@@ -11,13 +11,7 @@ import java.util.concurrent.TimeUnit;
  * @author M.Allaudin
  */
 
-final class EaseDefaultConfig implements EaseConfig {
-
-    @NonNull
-    @Override
-    public String getBaseUrl() {
-        return "";
-    }
+abstract class EaseDefaultConfig implements EaseConfig {
 
     @NonNull
     @Override
