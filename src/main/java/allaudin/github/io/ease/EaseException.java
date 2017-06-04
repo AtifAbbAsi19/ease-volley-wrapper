@@ -16,6 +16,10 @@ public class EaseException extends Exception {
     EaseException() {
     }
 
+    public EaseException(String message) {
+        super(message);
+    }
+
     EaseException(Throwable cause) {
         super(cause);
     }

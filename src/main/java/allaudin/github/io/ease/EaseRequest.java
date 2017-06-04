@@ -1,6 +1,8 @@
 package allaudin.github.io.ease;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -149,6 +151,12 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
     @Override
     public EaseRequest<T> execute(Context context) {
 
+
+        if (!isDeviceOnline(context) && mResponseCallbacks != null) {
+            mResponseCallbacks.onError(this, new EaseException("No internet connection."));
+            return this;
+        }
+
         final EaseConfig config = EaseUtils.getConfig();
 
         RequestHeaders defaultHeaders = config.defaultHeaders();
@@ -199,6 +207,18 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
 
         }
     }
+
+    /**
+     * Check internet connectivity.
+     *
+     * @return true if device is connect to <b>any</b> network, false otherwise.
+     */
+    private boolean isDeviceOnline(Context ctx) {
+        ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cm.getActiveNetworkInfo();
+        return info != null && info.isConnected();
+    }
+
 
     /**
      * Initialize and show dialog if call is not running in background.
@@ -275,7 +295,7 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
         hideDialog();
         if (mResponseCallbacks != null) {
             mResponseCallbacks.onError(this, new EaseException(error));
-        }else {
+        } else {
             Log.w("ease", "response callbacks are not specified for request [" + mEndPoint + "]");
         }
     } // onErrorResponse
