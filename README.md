@@ -48,13 +48,19 @@ Please clone or download this module and add it as `Android library` in your pro
 `Ease` is not smart enough to know every thing in advance. To help it out, you need to pass a configuration 
 object *(implementation of `EaseConfig` interface)* to `Ease` for making it work according to your need.
 
+You can either create your own configuration by implementing `EaseConfig` interface or `extending` from
+`EaseDefaultConfig` which provides default functionality e.g. default loader etc.
+
 Call `EaseUtils.init` at least once with `EaseConfig` object for configuring `Ease`.
 
     EaseUtils.init(EaseConfig)
     
-        
-> Please note if you don't initialize `Ease`, it will use default implementation of `EaseConfig`.        
-    
+
+## Permission
+
+`Ease` required `android.permission.ACCESS_NETWORK_STATE` & `android.permission.INTERNET` permission for accessing
+network and checking network state.
+
 
 ## Building a Request
 

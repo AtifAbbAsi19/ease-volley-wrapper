@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * @author M.Allaudin
  */
 
-abstract class EaseDefaultConfig implements EaseConfig {
+public abstract class EaseDefaultConfig implements EaseConfig {
 
     @NonNull
     @Override
@@ -44,4 +44,7 @@ abstract class EaseDefaultConfig implements EaseConfig {
     public int numOfRetries() {
         return 0;
     }
+
+
+
 }
