@@ -155,7 +155,6 @@ network call is running in background **no progress dialog will be shown to user
 
 - Add support for SSL certificate and key pinning [In Progress]
 - Add support for multiple parallel requests
-- Make code coverage to 100%.
 
 > If you find a way to improve it, please don't hesitate to create a pull request. 
 > I appreciate improvements.
