@@ -209,6 +209,15 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
     }
 
     /**
+     * Returns status, if service was running in background or not.
+     *
+     * @return true - if service was running in background, false otherwise.
+     */
+    public boolean wasRunningInBackground() {
+        return mRunInBackground;
+    }
+
+    /**
      * Check internet connectivity.
      *
      * @return true if device is connect to <b>any</b> network, false otherwise.
