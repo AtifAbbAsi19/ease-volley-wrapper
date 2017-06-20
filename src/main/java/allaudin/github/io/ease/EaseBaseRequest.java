@@ -97,11 +97,11 @@ class EaseBaseRequest<T> extends Request<EaseResponse<T>> {
     }
 
     /**
-     * Return a String representation of key.
+     * Return a String representation of key
      *
-     * @param json       json from which key is extracted.
+     * @param json       json from which key is extracted
      * @param key        key for json field
-     * @param defaultVal default value to be return when json key has null value or key is not found.
+     * @param defaultVal default value to be return when json key has null value or key is not found
      * @return String representation of data against key or empty if key is not present or value is {@code null}
      */
     private String parseJsonKey(JsonObject json, String key, String defaultVal) {
