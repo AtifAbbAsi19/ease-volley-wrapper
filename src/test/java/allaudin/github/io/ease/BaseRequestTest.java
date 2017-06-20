@@ -57,7 +57,7 @@ public class BaseRequestTest {
 
         typeRequest = getEaseRequest(userTypeToken, new MockResponseListener<UserTestModel>(), mockErrorListener);
 
-        stringRequest = getEaseRequest(EaseType.getType(String.class), new MockResponseListener<String>(), mockErrorListener);
+        stringRequest = getEaseRequest(EaseStringType.getType(String.class), new MockResponseListener<String>(), mockErrorListener);
     }
 
     private <T> EaseBaseRequest<T> getEaseRequest(TypeToken<EaseResponse<T>> token, MockResponseListener<T> mockResponseListener, MockErrorListener mockErrorListener) {

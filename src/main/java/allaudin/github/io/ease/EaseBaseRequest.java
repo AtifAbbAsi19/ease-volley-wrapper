@@ -75,7 +75,7 @@ class EaseBaseRequest<T> extends Request<EaseResponse<T>> {
 
             EaseResponse<T> allayResponse;
 
-            if (mTypeToken instanceof EaseType && ((EaseType) mTypeToken).getActualType().equals(String.class)) {
+            if (mTypeToken instanceof EaseStringType && ((EaseStringType) mTypeToken).getActualType().equals(String.class)) {
                 allayResponse = new EaseResponse<>();
                 allayResponse.setStatusCode(response.statusCode);
                 JsonObject object = new JsonParser().parse(json).getAsJsonObject();

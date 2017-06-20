@@ -144,7 +144,7 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
      * @return RequestBuilder for this type
      */
     public static <String> RequestBuilder<String> asString(Class<String> token) {
-        return new RequestBuilder<>(EaseType.getType(token));
+        return new RequestBuilder<>(EaseStringType.getType(token));
     }
 
 
