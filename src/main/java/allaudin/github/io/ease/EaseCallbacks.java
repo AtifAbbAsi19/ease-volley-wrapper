@@ -1,7 +1,6 @@
 package allaudin.github.io.ease;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.WorkerThread;
 
 /**
  * Presents <em>parsed</em> network response in a clean manner.
@@ -55,7 +54,7 @@ public interface EaseCallbacks<T> {
      * @param description description retrieved from response
      * @param data        data retrieved from response
      */
-    @WorkerThread
-    void onAfterParse(@NonNull EaseRequest<T> request, @NonNull String description, T data);
+   /* @WorkerThread
+    void onAfterParse(@NonNull EaseRequest<T> request, @NonNull String description, T data);*/
 
 } // EaseCallbacks
