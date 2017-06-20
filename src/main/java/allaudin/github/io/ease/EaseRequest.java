@@ -19,7 +19,7 @@ import java.util.Locale;
  * does heavy lifting of initializing request, setting proper types, request body
  * and headers etc.
  *
- * @param <T> asString of request
+ * @param <T> type of request
  * @author M.Allaudin
  * @see RequestHeaders
  * @see RequestBody
