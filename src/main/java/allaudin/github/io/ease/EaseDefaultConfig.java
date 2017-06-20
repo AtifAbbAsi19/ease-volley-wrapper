@@ -45,6 +45,8 @@ public abstract class EaseDefaultConfig implements EaseConfig {
         return 0;
     }
 
-
-
+    @Override
+    public boolean debugMode() {
+        return false;
+    }
 }

@@ -78,4 +78,13 @@ public interface EaseConfig {
      */
     int numOfRetries();
 
+    /**
+     * Turn on debug mode.
+     * <p>
+     * Debug mode logs requests and responses.
+     *
+     * @return true - for turning on debug mode, false otherwise
+     */
+    boolean debugMode();
+
 }
