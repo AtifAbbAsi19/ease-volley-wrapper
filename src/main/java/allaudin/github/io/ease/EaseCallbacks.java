@@ -1,7 +1,6 @@
 package allaudin.github.io.ease;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 /**
  * Presents <em>parsed</em> network response in a clean manner.
@@ -28,7 +27,7 @@ public interface EaseCallbacks<T> {
      * @param description description retrieved from response
      * @param data        data retrieved from response, null only if returned from response
      */
-    void onSuccess(@NonNull EaseRequest<T> request, @NonNull String description, @Nullable T data);
+    void onSuccess(@NonNull EaseRequest<T> request, @NonNull String description, T data);
 
     /**
      * Called when server returns status code in range of failure i.e. {@code statusCode >= 400}
