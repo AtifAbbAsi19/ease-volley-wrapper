@@ -1,6 +1,7 @@
 package allaudin.github.io.ease;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.WorkerThread;
 
 /**
  * Presents <em>parsed</em> network response in a clean manner.
@@ -44,5 +45,17 @@ public interface EaseCallbacks<T> {
      * @param e       exception wrapping the cause of failure (if available)
      */
     void onError(@NonNull EaseRequest<T> request, @NonNull EaseException e);
+
+    /**
+     * Called on background thread, after parsing response and before sending response to UI thread.
+     * <p>
+     * <b>Note:</b> This will only be called if response is successful and no error occured during parsing.
+     *
+     * @param request     request for which response is parsed
+     * @param description description retrieved from response
+     * @param data        data retrieved from response
+     */
+    @WorkerThread
+    void onAfterParse(@NonNull EaseRequest<T> request, @NonNull String description, T data);
 
 } // EaseCallbacks

@@ -44,5 +44,5 @@ public abstract class EaseDefaultConfig implements EaseConfig {
     public int numOfRetries() {
         return 0;
     }
-    
+
 }
