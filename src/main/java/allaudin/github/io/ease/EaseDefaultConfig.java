@@ -44,9 +44,5 @@ public abstract class EaseDefaultConfig implements EaseConfig {
     public int numOfRetries() {
         return 0;
     }
-
-    @Override
-    public boolean debugMode() {
-        return false;
-    }
+    
 }
