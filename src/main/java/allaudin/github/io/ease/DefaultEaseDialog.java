@@ -13,18 +13,18 @@ import android.support.annotation.NonNull;
 
 public class DefaultEaseDialog implements EaseDialog {
 
-    private CharSequence title;
+    private CharSequence mtitle;
     private ProgressDialog mProgressDialog;
 
     private DefaultEaseDialog(@NonNull CharSequence title) {
-        this.title = title;
+        this.mtitle = title;
     }
 
     @Override
     public EaseDialog init(Context context) {
         if (mProgressDialog == null) {
             this.mProgressDialog = new ProgressDialog(context);
-            this.mProgressDialog.setTitle(title);
+            this.mProgressDialog.setTitle(mtitle);
         }
         return this;
     }
