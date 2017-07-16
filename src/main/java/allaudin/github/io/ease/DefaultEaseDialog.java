@@ -44,7 +44,7 @@ public class DefaultEaseDialog implements EaseDialog {
     @Override
     public void hide() {
         if (mProgressDialog.isShowing()) {
-            mProgressDialog.hide();
+            mProgressDialog.dismiss();
         }
     }
 

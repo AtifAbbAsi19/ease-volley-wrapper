@@ -230,7 +230,9 @@ public class EaseRequest<T> implements Response.Listener<EaseResponse<T>>, Respo
 
     @Override
     public void cancel() {
-        mEaseBaseRequest.cancel();
+        if(mEaseBaseRequest != null){
+            mEaseBaseRequest.cancel();
+        }
     }
 
     @Override
