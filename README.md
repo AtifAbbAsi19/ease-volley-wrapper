@@ -151,11 +151,6 @@ For running network calls in background, you can call `runInBackground()` while 
 network call is running in background **no progress dialog will be shown to user**.
 
 
-## To Do
-
-- Add support for SSL certificate and key pinning [In Progress]
-- Add support for multiple parallel requests
-
 > If you find a way to improve it, please don't hesitate to create a pull request. 
 > I appreciate improvements.
 
