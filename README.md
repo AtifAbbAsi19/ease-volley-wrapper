@@ -1,3 +1,6 @@
+
+>> This version is deprecated. Use [v2](https://github.com/allaudin/ease-volley-wrapper-v2)
+
 # Ease Volley Wrapper
 
 **Ease** is a wrapper around [Volley](https://github.com/google/volley) for handling network 
