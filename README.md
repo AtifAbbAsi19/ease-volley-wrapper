@@ -1,5 +1,5 @@
 
->> This version is deprecated. Use [v2](https://github.com/allaudin/ease-volley-wrapper-v2)
+> This version is deprecated. Use [version 2](https://github.com/allaudin/ease-volley-wrapper-v2)
 
 # Ease Volley Wrapper
 
